@@ -1,5 +1,18 @@
-import 'package:anybank/anybank.dart' as anybank;
+import 'dart:ffi';
 
-void main(List<String> arguments) {
-  print('Hello world: ${anybank.calculate()}!');
+import 'package:anybank/conta.dart';
+
+void main() {
+  Conta contaMatheus = Conta("Matheus", 1000);
+  Conta contaRoberta = Conta("Roberta", 2000);
+
+  List<Conta> contas = <Conta>[contaMatheus, contaRoberta];
+
+  for (Conta conta in contas) {
+    conta.imprimiSaldo();
+  }
+
+  contaRoberta.receber(3000);
+  contaMatheus.receber(500);
+  contaMatheus.enviar(200);
 }
